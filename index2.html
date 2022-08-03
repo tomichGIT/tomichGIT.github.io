@@ -3,6 +3,35 @@
 <body>
 <h1>Hello World (index.php [no soy php])</h1>
 <p>I'm hosted with GitHub Pages. trying to use javascript</p>
-  <script>alert("HOLA");</script>
+   
+  <section class="seccion--sobremi">
+            acá meto la info obtenida por fetch
+            <div>
+                <h3>Facts de gatos</h3>
+                <div id="catFacts"></div>
+            </div>
+        </section>
+  
+  <script>
+    //alert("HOLA");
+    
+    fetch('https://catfact.ninja/facts?page=1')
+    .then(response => response.json())
+    .then(data => {
+        const factsDiv = document.getElementById('catFacts');
+        const A_datos = data.data;
+      
+        let htmlFacts ="<ul>";
+        A_datos.forEach(fact => {
+            //factsDiv.innerHTML += `<p>${fact.fact} (${fact.length})</p>`;
+            htmlFacts += `<li>${fact.fact} (${fact.length})</li>`;
+        });
+        htmlFacts +="</ul>";
+        factsDiv.innerHTML=htmlFacts;
+        //factsDiv.innerHTML = data.data[0].fact;
+        console.log(data)
+    });
+    
+  </script>
 </body>
 </html>
