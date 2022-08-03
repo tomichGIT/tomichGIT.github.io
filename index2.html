@@ -7,7 +7,7 @@
   <section class="seccion--sobremi">
             acá meto la info obtenida por fetch
             <div>
-                <h3>Facts de gatos</h3>
+                <h3>10 Facts de gatos</h3>
                 <div id="catFacts"></div>
             </div>
         </section>
@@ -21,13 +21,12 @@
         const factsDiv = document.getElementById('catFacts');
         const A_datos = data.data;
       
-        let htmlFacts ="<ul>";
+        let htmlFacts ="";
         A_datos.forEach(fact => {
             //factsDiv.innerHTML += `<p>${fact.fact} (${fact.length})</p>`;
             htmlFacts += `<li>${fact.fact} (${fact.length})</li>`;
         });
-        htmlFacts +="</ul>";
-        factsDiv.innerHTML=htmlFacts;
+        factsDiv.innerHTML=`<ol>${htmlFacts}</ol>`;
         //factsDiv.innerHTML = data.data[0].fact;
         console.log(data)
     });
